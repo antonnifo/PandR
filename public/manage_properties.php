@@ -42,7 +42,7 @@ $(document).ready(function(){
             <span class="icon-bar"></span>
             <span class="icon-bar"></span>
           </button>
-         <a class="navbar-brand" href="#">P<small>and</small>R Management System</a>
+         <a class="navbar-brand" href="index.php">P<small>and</small>R Management System</a>
         </div>
         <div id="navbar" class="collapse navbar-collapse">
           <ul class="nav navbar-nav">
@@ -122,14 +122,14 @@ $(document).ready(function(){
           <tbody id="myTable">        
                       <?php
                       $count = 1;
-                      $sel_query = "SELECT * FROM property  ORDER BY prop_id Asc; ";
+                      $sel_query = "SELECT * FROM property  ORDER BY property_id Asc; ";
                       $result = mysqli_query($con, $sel_query);
                       confirm_query($result);
                       while ($row = mysqli_fetch_assoc($result)) { ?>
 
                       <tr>
                         <td><?php echo $count; ?></td>
-                        <td><?php echo $row["Prop_name"]; ?></td>
+                        <td><?php echo $row["prop_name"]; ?></td>
                         <td><?php echo $row["prop_type"]; ?></td>
                         <td><?php echo $row["rent"]; ?></td>
                         <td><?php echo $row["units_vac"]; ?></td>
