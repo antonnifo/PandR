@@ -143,7 +143,7 @@ $(document).ready(function(){
                         <td><?php echo $row["DOA"]; ?></td>
                         <td><?php echo $row["occupants"]; ?></td>
                         <td><?php echo $row["agent"]; ?></td>
-                        <td id="noPrint"><a href="edit_property.php?id=<?php echo $row["tena_id"]; ?>"class="btn btn-default"> <i class="fa fa-pencil"></i> Edit</a> </td>
+                        <td id="noPrint"><a href="edit_tenant.php?id=<?php echo $row["tena_id"]; ?>"class="btn btn-default"> <i class="fa fa-pencil"></i> Edit</a> </td>
                         <td id="noPrint"><a href="delete_tenant.php?id=<?php echo $row["tena_id"]; ?>"class="btn btn-warning"> <i class="fa fa-trash"></i> Delete </a> </td>
                       </tr>
                        <?php $count++;
