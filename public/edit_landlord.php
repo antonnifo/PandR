@@ -123,7 +123,6 @@
 
               <?php
               $landlord_id = $_REQUEST['id'];
-            
               $sel_query = "SELECT * FROM landlords  WHERE landlord_id = '{$landlord_id}'; ";
               $result_1 = mysqli_query($con, $sel_query);
               confirm_query($result_1);
@@ -139,6 +138,7 @@
                 $property_name = $_POST["property_name"];
                 $account = $_POST["account"];
                 $agent = $_SESSION['username'];
+                $new_id = $_POST["landlord_id"];
               }
               ?>
 
@@ -147,46 +147,76 @@
           <div class="col-md-12">
 
     <form action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>" role="form" method="POST" enctype="multipart/form-data">
+                   
+             <input type="hidden" name="landlord_id" value="<?php echo $row["landlord_id"]; ?>">
+              <div class="form-group">
+                  <input class="form-control " name="fname" id="name" type="text" placeholder="First Name" value="<?php echo $row["fname"]; ?>" required>
+              </div> 
 
-        <div class="form-group">
-             <input class="form-control " name="fname" id="name" type="text" placeholder="First Name" value="<?php echo $row["fname"]; ?>" required>
-        </div> 
+              <div class="form-group">
+                  <input class="form-control " name="lname" id="name" type="text" placeholder="last Name" value="<?php echo $row["lname"]; ?>" required>
+              </div> 
 
-        <div class="form-group">
-            <input class="form-control " name="lname" id="name" type="text" placeholder="last Name" value="<?php echo $row["lname"]; ?>" required>
-        </div> 
+              <div class="form-group">
+                  <input class="form-control " name="id_no" id="name" type="text" placeholder="ID Number" value="<?php echo $row["id_no"]; ?>" required>
+              </div> 
 
-        <div class="form-group">
-            <input class="form-control " name="id_no" id="name" type="text" placeholder="ID Number" value="<?php echo $row["id_no"]; ?>" required>
-        </div> 
+              <div class="form-group">
+                  <input class="form-control " name="phone"  type="text" placeholder="Phone Number" value="<?php echo $row["phone"]; ?>" required>
+              </div>
 
-        <div class="form-group">
-            <input class="form-control " name="phone"  type="text" placeholder="Phone Number" value="<?php echo $row["phone"]; ?>" required>
-        </div>
+              <div class="form-group">
+                  <input class="form-control " name="email" id="name" type="text" placeholder="Email Address" value="<?php echo $row["email"]; ?>" required>
+              </div> 
 
-        <div class="form-group">
-            <input class="form-control " name="email" id="name" type="text" placeholder="Email Address" value="<?php echo $row["email"]; ?>" required>
-        </div> 
+              <div class="form-group">
+                  <input class="form-control " name="property_name" id="name" type="text" placeholder="Property Name" value="<?php echo $row["prop_name"]; ?>" required>
+              </div> 
 
-        <div class="form-group">
-            <input class="form-control " name="property_name" id="name" type="text" placeholder="Property Name" value="<?php echo $row["prop_name"]; ?>" required>
-        </div> 
+              <div class="form-group">
+                  <input class="form-control " name="bank" id="name" type="text" placeholder="Name of Bank" value="<?php echo $row["bank"]; ?>" required>
+              </div> 
 
-        <div class="form-group">
-            <input class="form-control " name="bank" id="name" type="text" placeholder="Name of Bank" value="<?php echo $row["bank"]; ?>" required>
-        </div> 
+              <div class="form-group">
+                  <input class="form-control " name="account" id="name" type="text" placeholder="Account Number" value="<?php echo $row["account_no"]; ?>" required>
+              </div> 
 
-        <div class="form-group">
-            <input class="form-control " name="account" id="name" type="text" placeholder="Account Number" value="<?php echo $row["account_no"]; ?>" required>
-        </div> 
-
-        <div class="form-group last">
-              <input type="submit" class="btn btn-danger btn-outline-primary" value="save changes">
-        </div>
+              <div class="form-group last">
+                    <input type="submit" class="btn btn-danger btn-outline-primary" value="save changes">
+              </div>
 
     </form>
               </div>
               </div>
+<?php 
+
+    if (isset($_POST["lname"])) {
+      $query = "UPDATE landlords SET fname = '{$fname}', lname='{$lname}', id_no = '{$id}',
+       phone = '{$phone}', email = '{$mail}', prop_name = '{$property_name}',
+        bank = '{$bank}',agent = '{$agent}',account_no = '{$account}' WHERE landlord_id = '{$new_id}' ";
+      
+      $results = mysqli_query($con, $query);
+      confirm_query($results);
+      
+      if ($results) {
+        echo ' <div class="alert alert-success alert-dismissable">
+              <button type="button" class="close" data-dismiss="alert"
+              aria-hidden="true">
+              &times;
+              </button>
+              Landlord details successfully updated.<a href="manage_landlords.php">view</a>
+              </div>';
+      }else {
+              echo' <div class="alert alert-success alert-dismissable">
+              <button type="button" class="close" data-dismiss="alert"
+              aria-hidden="true">
+              &times;
+              </button>
+              Erorr while updating record.<a href="manage_landlords.php">Go Back</a>
+              </div>';         
+            }
+    }
+?>       
                 </div>
               </div>
           </div>
