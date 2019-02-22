@@ -1,4 +1,5 @@
-h<?php include '../includes/db_connection.php'; ?>
+<?php ob_start(); ?>
+<?php include '../includes/db_connection.php'; ?>
 <?php include '../includes/functions.php'; ?>
 <?php include '../includes/auth.php'; ?>
 <!DOCTYPE html>
@@ -136,11 +137,13 @@ h<?php include '../includes/db_connection.php'; ?>
                 $depo = $_POST['depo'];
                 $occup = $_POST['occu'];
                 $agent = $_SESSION['username'];
+                $new_id = $_POST["tena_id"];
               }
               ?>
              <div class="panel-body">
         <div class="row">
           <div class="col-md-12">
+          <input type="hidden" name="tena_id" value="<?php echo $row["tena_id"]; ?>">
         <form action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>" role="form" method="POST" enctype="multipart/form-data">
 
           <div class="form-group">
@@ -161,7 +164,7 @@ h<?php include '../includes/db_connection.php'; ?>
         <div class="form-group">
         <label for =fname>Phone Number</label>
         <input class="form-control " name="phone"  type="text" value="<?php echo $row["phone"]; ?>" placeholder="Phone Number" required>
-        </div>
+        </div>prop_name
         <div class="form-group">
         <label for =fname>Email</label>
         <input class="form-control " name="email" id="name" type="email" value="<?php echo $row["email"]; ?>" placeholder="Email Address" required>
@@ -193,6 +196,32 @@ h<?php include '../includes/db_connection.php'; ?>
         </form>
               </div>
               </div>
+
+              <?php 
+
+    if (isset($_POST["lname"])) {
+      $query = "UPDATE tenants SET fname = '{$fname}', lname='{$lname}', id_no = '{$id}',
+       phone = '{$phone}', email = '{$mail}', property_name = '{$pro}',
+       unit_no = '{$unit}',depo_amount = '{$depo}',occupants = '{$occup}' WHERE tena_id = '{$new_id}' ";
+      
+      $results = mysqli_query($con, $query);
+      confirm_query($results);
+      
+      if ($results) {
+          // Redirect user to manage landlords page on success edit
+          header("Location: manage_tenants.php");
+       
+      }else {
+          echo' <div class="alert alert-success alert-dismissable">
+          <button type="button" class="close" data-dismiss="alert"
+          aria-hidden="true">
+          &times;prop_name
+          </button>
+          Erorr while updating record.<a href="manage_landlords.php">Go Back</a>
+          </div>';         
+            }
+    }
+?>  
 
 
              
