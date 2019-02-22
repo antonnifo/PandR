@@ -1,3 +1,4 @@
+<?php ob_start(); ?>
 <?php include '../includes/db_connection.php'; ?>
 <?php include '../includes/functions.php'; ?>
 <?php include '../includes/auth.php'; ?>
@@ -199,21 +200,17 @@
       confirm_query($results);
       
       if ($results) {
-        echo ' <div class="alert alert-success alert-dismissable">
-              <button type="button" class="close" data-dismiss="alert"
-              aria-hidden="true">
-              &times;
-              </button>
-              Landlord details successfully updated.<a href="manage_landlords.php">view</a>
-              </div>';
+          // Redirect user to manage landlords page on success edit
+          header("Location: manage_landlords.php");
+       
       }else {
-              echo' <div class="alert alert-success alert-dismissable">
-              <button type="button" class="close" data-dismiss="alert"
-              aria-hidden="true">
-              &times;
-              </button>
-              Erorr while updating record.<a href="manage_landlords.php">Go Back</a>
-              </div>';         
+          echo' <div class="alert alert-success alert-dismissable">
+          <button type="button" class="close" data-dismiss="alert"
+          aria-hidden="true">
+          &times;
+          </button>
+          Erorr while updating record.<a href="manage_landlords.php">Go Back</a>
+          </div>';         
             }
     }
 ?>       
