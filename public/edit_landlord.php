@@ -151,34 +151,42 @@
                    
              <input type="hidden" name="landlord_id" value="<?php echo $row["landlord_id"]; ?>">
               <div class="form-group">
+                  <label for =fname>First Name</label>
                   <input class="form-control " name="fname" id="name" type="text" placeholder="First Name" value="<?php echo $row["fname"]; ?>" required>
               </div> 
 
               <div class="form-group">
+                   <label for =fname>Last Name</label>
                   <input class="form-control " name="lname" id="name" type="text" placeholder="last Name" value="<?php echo $row["lname"]; ?>" required>
               </div> 
 
               <div class="form-group">
+                  <label for =fname>ID/Passport Number</label>
                   <input class="form-control " name="id_no" id="name" type="text" placeholder="ID Number" value="<?php echo $row["id_no"]; ?>" required>
               </div> 
 
               <div class="form-group">
+                  <label for =fname>Phone</label>
                   <input class="form-control " name="phone"  type="text" placeholder="Phone Number" value="<?php echo $row["phone"]; ?>" required>
               </div>
 
               <div class="form-group">
+                   <label for =fname>Email Address</label>
                   <input class="form-control " name="email" id="name" type="text" placeholder="Email Address" value="<?php echo $row["email"]; ?>" required>
               </div> 
 
               <div class="form-group">
+                  <label for =fname>Property Name</label>
                   <input class="form-control " name="property_name" id="name" type="text" placeholder="Property Name" value="<?php echo $row["prop_name"]; ?>" required>
               </div> 
 
               <div class="form-group">
+                  <label for =fname>Name of Bank</label>
                   <input class="form-control " name="bank" id="name" type="text" placeholder="Name of Bank" value="<?php echo $row["bank"]; ?>" required>
               </div> 
 
               <div class="form-group">
+                  <label for =fname>Account Number</label>
                   <input class="form-control " name="account" id="name" type="text" placeholder="Account Number" value="<?php echo $row["account_no"]; ?>" required>
               </div> 
 
