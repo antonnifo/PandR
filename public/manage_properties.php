@@ -137,8 +137,8 @@ $(document).ready(function(){
                         <td><?php echo $row["DOA"]; ?></td>
                         <td><?php echo $row["added_by"]; ?></td>
                         <td><?php echo $row["landlord_id"]; ?></td>
-                        <td id="noPrint"><a href="edit_property.php?id=<?php echo $row["prop_id"]; ?>"class="btn btn-default"> <i class="fa fa-pencil"></i> Edit</a> </td>
-                        <td id="noPrint"><a href="delete_property.php?id=<?php echo $row["prop_id"]; ?>"class="btn btn-warning"> <i class="fa fa-trash"></i> Delete </a> </td>
+                        <td id="noPrint"><a href="edit_property.php?id=<?php echo $row["property_id"]; ?>"class="btn btn-default"> <i class="fa fa-pencil"></i> Edit</a> </td>
+                        <td id="noPrint"><a href="delete_property.php?id=<?php echo $row["property_id"]; ?>"class="btn btn-warning"> <i class="fa fa-trash"></i> Delete </a> </td>
                       </tr>
                        <?php $count++;
                     } ?>
