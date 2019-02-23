@@ -143,9 +143,9 @@
              <div class="panel-body">
         <div class="row">
           <div class="col-md-12">
-          <input type="hidden" name="tena_id" value="<?php echo $row["tena_id"]; ?>">
+         
         <form action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>" role="form" method="POST" enctype="multipart/form-data">
-
+          <input type="hidden" name="tena_id" value="<?php echo $row["tena_id"]; ?>">   
           <div class="form-group">
           <label for =fname>First Name</label>
         <input class="form-control " name="fname" id="name" type="text" value="<?php echo $row["fname"]; ?>" placeholder="First Name" required>
@@ -164,7 +164,7 @@
         <div class="form-group">
         <label for =fname>Phone Number</label>
         <input class="form-control " name="phone"  type="text" value="<?php echo $row["phone"]; ?>" placeholder="Phone Number" required>
-        </div>prop_name
+        </div>
         <div class="form-group">
         <label for =fname>Email</label>
         <input class="form-control " name="email" id="name" type="email" value="<?php echo $row["email"]; ?>" placeholder="Email Address" required>
