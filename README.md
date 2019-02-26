@@ -1,5 +1,7 @@
-# Property and Rent Management System   
+## Property and Rent Management System  
+### Tech/framework used 
+[PHP 7.2](http://php.net/docs.php) 
+### Project Overview 
 A web based property and rent management system is a system that aims to help a property management company carry out its daily activities effectively and in an efficient manner. They include rent collection, property management and tenants’ management.  
-System development will be guided by the following objectives: Analyze current systems to identify user requirements, design the web based system, develop and test the online system.
-In the proposed system all businesses and front end logic will be implemented in PHP and MYSQL for the purpose of database support. HTML5 will be used to develop the page layout while CSS will be used for the designing part and JAVASCRIPT will be used for the validation tasks. The latest version of bootstrap 4 will be used to improve the user interface and give the system a responsive design on both the back end and the front end. Methodology which will be used to develop this system is RAD. Project will run over the Apache2 server
-On successful implementation the systems will assist company agents to up their game in rent collection and recording and analyzing of data relating to tenants, landlords and properties that they have under their control leading to better decisions. The above mentioned services will be available to them every day every time, that is, it’s not restricted by the working hours. It will automate the current manual procedure in an effective and efficient way.
+
+
