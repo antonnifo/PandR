@@ -93,7 +93,16 @@
   echo $data['total'];
   ?>
  </span></a>
-  <a href="#" class="list-group-item"><i class="fa fa-money" aria-hidden="true"></i> Manage Payments <span class="badge">203</span></a>
+  <a href="manage_payments.php" class="list-group-item"><i class="fa fa-money" aria-hidden="true"></i> Manage Payments <span class="badge">
+  <?php 
+  $query = "SELECT count(*) as total from mpesa";
+  $result = mysqli_query($con, $query);
+  confirm_query($result);
+  $data = mysqli_fetch_assoc($result);
+  echo $data['total'];
+  ?>
+
+  </span></a>
             </div>
             <div class="well">
               <h4>Disk Space Used</h4>

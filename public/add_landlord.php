@@ -96,7 +96,16 @@
   echo $data['total'];
   ?>
  </span></a>
-  <a href="#" class="list-group-item"><i class="fa fa-money" aria-hidden="true"></i> Manage Payments <span class="badge">203</span></a>
+  <a href="manage_payments.php" class="list-group-item"><i class="fa fa-money" aria-hidden="true"></i> Manage Payments <span class="badge">
+  <?php 
+  $query = "SELECT count(*) as total from mpesa";
+  $result = mysqli_query($con, $query);
+  confirm_query($result);
+  $data = mysqli_fetch_assoc($result);
+  echo $data['total'];
+  ?>
+
+  </span></a>
             </div>
 
             <div class="well">
@@ -149,46 +158,47 @@
           <div class="col-md-12">
         <form action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>" role="form" method="POST" enctype="multipart/form-data">
 
-          <div class="form-group">
-        <input class="form-control " name="fname" id="name" type="text" placeholder="First Name" required>
-        </div> 
+            <div class="form-group">
+              <input class="form-control " name="fname" id="name" type="text" placeholder="First Name" required>
+            </div> 
 
-          <div class="form-group">
-        <input class="form-control " name="lname" id="name" type="text" placeholder="last Name" required>
-        </div> 
+            <div class="form-group">
+              <input class="form-control " name="lname" id="name" type="text" placeholder="last Name" required>
+            </div> 
 
-        <div class="form-group">
-        <input class="form-control " name="id_no" id="name" type="text" placeholder="ID Number" required>
-        </div> 
+            <div class="form-group">
+              <input class="form-control " name="id_no" id="name" type="text" placeholder="ID Number" required>
+            </div> 
 
-        <div class="form-group">
-        <input class="form-control " name="phone"  type="text" placeholder="Phone Number" required>
-        </div>
-        <div class="form-group">
-        <input class="form-control " name="email" id="name" type="text" placeholder="Email Address" required>
-        </div> 
+            <div class="form-group">
+              <input class="form-control " name="phone"  type="text" placeholder="Phone Number" required>
+            </div>
 
-        <div class="form-group">
-        <input class="form-control " name="property_id" id="name" type="text" placeholder="Property Name" required>
-        </div> 
+            <div class="form-group">
+              <input class="form-control " name="email" id="name" type="text" placeholder="Email Address" required>
+            </div> 
 
-        <div class="form-group">
-        <input class="form-control " name="bank" id="name" type="text" placeholder="Name of Bank" required>
-        </div> 
+            <div class="form-group">
+              <input class="form-control " name="property_id" id="name" type="text" placeholder="Property Name" required>
+            </div> 
 
-        <div class="form-group">
-        <input class="form-control " name="account" id="name" type="text" placeholder="Account Number" required>
-        </div> 
+            <div class="form-group">
+              <input class="form-control " name="bank" id="name" type="text" placeholder="Name of Bank" required>
+            </div> 
+
+            <div class="form-group">
+              <input class="form-control " name="account" id="name" type="text" placeholder="Account Number" required>
+            </div> 
 
 
-        <div class="form-group last">
-         <input type="file" name="pass" id="name">
-         <p class="help-block">Passport Photo</p>
-        </div>
+            <div class="form-group last">
+              <input type="file" name="pass" id="name">
+            <p class="help-block">Passport Photo</p>
+            </div>
 
-        <div class="form-group last">
-        <input type="submit" class="btn btn-danger btn-outline-primary" value="submit">
-        </div>
+            <div class="form-group last">
+              <input type="submit" class="btn btn-danger btn-outline-primary" value="submit">
+            </div>
         </form>
               </div>
               </div>
@@ -208,31 +218,31 @@ VALUES ('{$fname}','{$lname}','{$id}','{$phone}','{$mail}','{ $propertyid}','{$d
 
       if ($results) {
         echo ' <div class="alert alert-success alert-dismissable">
-     <button type="button" class="close" data-dismiss="alert"
-     aria-hidden="true">
-     &times;
-     </button>
-     Landlord  added Successfully.<a href="manage_landlords.php">view</a>
-    </div>';
+                    <button type="button" class="close" data-dismiss="alert"
+                    aria-hidden="true">
+                    &times;
+                    </button>
+                    Landlord  added Successfully.<a href="manage_landlords.php">view</a>
+                </div>';
       } 
 
     } else {
- echo' <div class="alert alert-success alert-dismissable">
-     <button type="button" class="close" data-dismiss="alert"
-     aria-hidden="true">
-     &times;
-     </button>
-     Staff creation failed.<a href="add_landlord.php">Try Again</a>
-    </div>';   
+        echo' <div class="alert alert-success alert-dismissable">
+                  <button type="button" class="close" data-dismiss="alert"
+                  aria-hidden="true">
+                  &times;
+                  </button>
+                  Staff creation failed.<a href="add_landlord.php">Try Again</a>
+              </div>';   
     }
   }
 } else {
     echo '<div class="alert alert-warning alert-dismissable">
-     <button type="button" class="close" data-dismiss="alert"
-     aria-hidden="true">
-     &times;
-     </button>
-     File should be jpeg/jpg/png image & only 100 kb in size.<a href="add_landlord.php">Try Again</a>
+          <button type="button" class="close" data-dismiss="alert"
+          aria-hidden="true">
+          &times;
+          </button>
+          File should be jpeg/jpg/png image & only 100 kb in size.<a href="add_landlord.php">Try Again</a>
     </div>';
   }
 }

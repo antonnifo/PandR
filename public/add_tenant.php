@@ -94,7 +94,16 @@
   echo $data['total'];
   ?>
  </span></a>
-  <a href="#" class="list-group-item"><i class="fa fa-money" aria-hidden="true"></i> Manage Payments <span class="badge">203</span></a>
+  <a href="manage_payments.php" class="list-group-item"><i class="fa fa-money" aria-hidden="true"></i> Manage Payments <span class="badge">
+  <?php 
+  $query = "SELECT count(*) as total from mpesa";
+  $result = mysqli_query($con, $query);
+  confirm_query($result);
+  $data = mysqli_fetch_assoc($result);
+  echo $data['total'];
+  ?>
+
+  </span></a>
             </div>
 
             <div class="well">
@@ -212,32 +221,32 @@ VALUES ('{$fname}','{$lname}','{$id}','{$phone}','{$mail}','{$pass}','{$pro}','{
 
         if ($results) {
           echo ' <div class="alert alert-success alert-dismissable">
-     <button type="button" class="close" data-dismiss="alert"
-     aria-hidden="true">
-     &times;
-     </button>
-     Tenant added Successfully.<a href="manage_tenants.php">view</a>
-    </div>';
+                    <button type="button" class="close" data-dismiss="alert"
+                    aria-hidden="true">
+                    &times;
+                    </button>
+                    Tenant added Successfully.<a href="manage_tenants.php">view</a>
+                    </div>';
         }
 
       } else {
         echo ' <div class="alert alert-danger alert-dismissable">
-     <button type="button" class="close" data-dismiss="alert"
-     aria-hidden="true">
-     &times;
-     </button>
-     tenant addition failed.<a href="add_tenant.php">Try Again</a>
-    </div>';
+                <button type="button" class="close" data-dismiss="alert"
+                aria-hidden="true">
+                &times;
+                </button>
+                tenant addition failed.<a href="add_tenant.php">Try Again</a>
+                </div>';
       }
     }
   } else {
     echo '<div class="alert alert-warning alert-dismissable">
-     <button type="button" class="close" data-dismiss="alert"
-     aria-hidden="true">
-     &times;
-     </button>
-     File should be jpeg/jpg/png image & only 100 kb in size.<a href="add_tenant.php">Try Again</a>
-    </div>';
+              <button type="button" class="close" data-dismiss="alert"
+              aria-hidden="true">
+              &times;
+              </button>
+              File should be jpeg/jpg/png image & only 100 kb in size.<a href="add_tenant.php">Try Again</a>
+              </div>';
   }
 }
 
