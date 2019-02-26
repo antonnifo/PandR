@@ -116,67 +116,70 @@
               <div class="panel-heading main-color-bg">
                 <h3 class="panel-title"> Property details</h3>
               </div>
+
               <?php 
+
               $name = $typeprop = $type = $rent = $occu = "";
               $vac = $landlord = $proof = $date = "";
+
               if ($_SERVER["REQUEST_METHOD"] == "POST") {
-                $name = $_POST["name"];
-                $typeprop = $_POST["type"];
-                $rent = $_POST["rent"];
-                $occu = $_POST["occu"];
-                $vac = $_POST["vac"];
-                $landlord = $_POST["landlord_id"];
-                // $proof = $_POST["proof"];
-                $agent = $_SESSION['username'];
-                $date = date("Y-m-d");
+                    $name = $_POST["name"];
+                    $typeprop = $_POST["type"];
+                    $rent = $_POST["rent"];
+                    $occu = $_POST["occu"];
+                    $vac = $_POST["vac"];
+                    $landlord = $_POST["landlord_id"];
+                    // $proof = $_POST["proof"];
+                    $agent = $_SESSION['username'];
+                    $date = date("Y-m-d");
               }
               if (isset($_FILES) & !empty($_FILES)) {
-                $proof = $_FILES['proof']['name'];
-                $size = $_FILES['proof']['size'];
-                $type = $_FILES['proof']['type'];
-                $tmp_name = $_FILES['proof']['tmp_name'];
+                    $proof = $_FILES['proof']['name'];
+                    $size = $_FILES['proof']['size'];
+                    $type = $_FILES['proof']['type'];
+                    $tmp_name = $_FILES['proof']['tmp_name'];
               }
               $location = "ownerships/";
               $maxsize = 90000000;
 
-
-
-
               ?>
-             <div class="panel-body">
+
+        <div class="panel-body">
         <div class="row">
           <div class="col-md-12">
         <form action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>" role="form" method="POST" enctype="multipart/form-data">
 
-          <div class="form-group">
-        <input class="form-control " name="name" id="name" type="text" placeholder="Property name" required>
-        </div> 
+            <div class="form-group">
+              <input class="form-control " name="name" id="name" type="text" placeholder="Property name" required>
+            </div> 
 
-          <div class="form-group">
-        <input class="form-control " name="type" id="name" type="text" placeholder="eg Mansion,swahili" required>
-        </div> 
+            <div class="form-group">
+              <input class="form-control " name="type" id="name" type="text" placeholder="eg Mansion,swahili" required>
+            </div> 
 
-        <div class="form-group">
-        <input class="form-control " name="rent" id="name" type="text" placeholder="Rent per unit" required>
-        </div> 
+            <div class="form-group">
+              <input class="form-control " name="rent" id="name" type="text" placeholder="Rent per unit" required>
+            </div> 
 
-        <div class="form-group">
-        <input class="form-control " name="occu"  type="text" placeholder="Occupied units" required>
-        </div>
-        <div class="form-group">
-        <input class="form-control " name="vac" id="name" type="text" placeholder="vacant units" required>
-        </div> 
+            <div class="form-group">
+              <input class="form-control " name="occu"  type="text" placeholder="Occupied units" required>
+            </div>
 
-        <div class="form-group">
-        <input class="form-control " name="landlord_id" id="name" type="text" placeholder="landlord ID" required>
-        </div> 
-        <div class="form-group last">
-         <input type="file" name="proof" id="name">
-         <p class="help-block">Proof of Ownership</p
-        </div>
-        <div class="form-group last">
-        <input type="submit" class="btn btn-danger btn-outline-primary" value="submit">
-        </div>
+            <div class="form-group">
+              <input class="form-control " name="vac" id="name" type="text" placeholder="vacant units" required>
+            </div> 
+
+            <div class="form-group">
+              <input class="form-control " name="landlord_id" id="name" type="text" placeholder="landlord ID" required>
+            </div> 
+
+            <div class="form-group last">
+              <input type="file" name="proof" id="name">
+            <p class="help-block">Proof of Ownership</p>
+            </div>
+            <div class="form-group last">
+              <input type="submit" class="btn btn-danger btn-outline-primary" value="submit">
+            </div>
         </form>
               </div>
               </div>
@@ -197,33 +200,33 @@ VALUES ('{$typeprop}','{$rent}','{$occu}','{$vac}','{$landlord}','{$name}','{ $a
 
         if ($results) {
           echo ' <div class="alert alert-success alert-dismissable">
-     <button type="button" class="close" data-dismiss="alert"
-     aria-hidden="true">
-     &times;
-     </button>
-     Property added Successfully.<a href="add_property.php">Try Again</a>
-    </div>';
+                      <button type="button" class="close" data-dismiss="alert"
+                      aria-hidden="true">
+                      &times;
+                      </button>
+                      Property added Successfully.<a href="add_property.php">Try Again</a>
+              </div>';
         }
 
       } else {
         echo ' <div class="alert alert-warning alert-dismissable">
-     <button type="button" class="close" data-dismiss="alert"
-     aria-hidden="true">
-     &times;
-     </button>
-     Property Creation failed.<a href="add_property.php">Try Again</a>
-    </div>';
+              <button type="button" class="close" data-dismiss="alert"
+              aria-hidden="true">
+              &times;
+              </button>
+              Property Creation failed.<a href="add_property.php">Try Again</a>
+            </div>';
       }
     }
 
     } else {
       echo '<div class="alert alert-warning alert-dismissable">
-     <button type="button" class="close" data-dismiss="alert"
-     aria-hidden="true">
-     &times;
-     </button>
-     File should be jpeg/jpg/png image & only 100 kb in size.<a href="add_property.php">Try Again</a>
-    </div>';
+            <button type="button" class="close" data-dismiss="alert"
+            aria-hidden="true">
+            &times;
+            </button>
+            File should be jpeg/jpg/png image & only 100 kb in size.<a href="add_property.php">Try Again</a>
+        </div>';
     }
   }
 
