@@ -204,7 +204,7 @@ VALUES ('{$typeprop}','{$rent}','{$occu}','{$vac}','{$landlord}','{$name}','{ $a
                       aria-hidden="true">
                       &times;
                       </button>
-                      Property added Successfully.<a href="add_property.php">Try Again</a>
+                      Property added Successfully.<a href="manage_properties.php">Manage Properties</a>
               </div>';
         }
 
