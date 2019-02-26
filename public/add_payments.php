@@ -1,7 +1,6 @@
 <?php include '../includes/db_connection.php'; ?>
 <?php include '../includes/functions.php'; ?>
 <?php include '../includes/auth.php'; ?>
-
 <!DOCTYPE html>
 <html lang="en">
   <head>
@@ -12,7 +11,7 @@
     <!-- Bootstrap core CSS -->
     <link href="css/bootstrap.min.css" rel="stylesheet">
     <link href="css/style.css" rel="stylesheet">
-    <link href="css/font-awesome.min.css" rel="stylesheet">
+     <link href="css/font-awesome.min.css" rel="stylesheet">
   </head>
   <body>
 
@@ -29,7 +28,7 @@
         </div>
         <div id="navbar" class="collapse navbar-collapse">
           <ul class="nav navbar-nav">
-            <li class="active"><a href="index.php">Dashboard</a></li>         
+            <li class="active"><a href="index.php">Dashboard</a></li>            
           </ul>
           <ul class="nav navbar-nav navbar-right">
             <li><a href="#">Welcome, <?php echo $_SESSION['username']; ?> <i class="fa fa-user" aria-hidden="true">
@@ -44,7 +43,7 @@
       <div class="container">
         <div class="row">
           <div class="col-md-10">
-            <h1><span class="fa fa-user" aria-hidden="true"></span> Landlords<small> Add landlord</small></h1>
+            <h1><span class="fa fa-home" aria-hidden="true"></span> Properties<small> Add Property</small></h1>
           </div>
          
         </div>
@@ -64,7 +63,7 @@
         <div class="row">
           <div class="col-md-3">
             <div class="list-group">
-               <a href="index.php" class="list-group-item active main-color-bg">
+              <a href="index.php" class="list-group-item active main-color-bg">
                 <span class="fa fa-cog fa-spin" aria-hidden="true"></span> Dashboard
               </a>
   <a href="manage_properties.php" class="list-group-item"><i class="fa fa-home" aria-hidden="true"></i> Manage Properties <span class="badge">
@@ -76,7 +75,6 @@
   echo $data['total'];
   ?>
   </span></a>
-
   <a href="manage_tenants.php" class="list-group-item"><i class="fa fa-group" aria-hidden="true"></i>  Manage Tenants <span class="badge">
   <?php 
   $query = "SELECT count(*) as total from tenants";
@@ -86,7 +84,6 @@
   echo $data['total'];
   ?>
   </span></a>
-  
   <a href="manage_landlords.php" class="list-group-item"><i class="fa fa-user" aria-hidden="true"></i>  Manage Landloards <span class="badge">
   <?php 
   $query = "SELECT count(*) as total from landlords";
@@ -107,7 +104,6 @@
 
   </span></a>
             </div>
-
             <div class="well">
               <h4>Disk Space Used</h4>
               <div class="progress">
@@ -127,129 +123,86 @@
             <!-- Website Overview -->
             <div class="panel panel-default">
               <div class="panel-heading main-color-bg">
-                <h3 class="panel-title"> Landlord details</h3>
+                <h3 class="panel-title"> Payment Records</h3>
               </div>
-              <?php 
-              $fname = $lname = $phone = $mail = "";
-              $bank = $account = $passport = $date =$type= "";
-              if ($_SERVER["REQUEST_METHOD"] == "POST") {
-                $fname = $_POST["fname"];
-                $lname = $_POST["lname"];
-                $id = $_POST["id_no"];
-                $phone = $_POST["phone"];
-                $mail = $_POST["email"];
-                $bank = $_POST["bank"];
-                $account = $_POST["account"];
-                $propertyid =$_POST["property_id"];
-                $date = date("Y-m-d");
-                $agent = $_SESSION['username'];
-              }
-              if (isset($_FILES) & !empty($_FILES)) {
-                $pass = $_FILES['pass']['name'];
-                $size = $_FILES['pass']['size'];
-                $type = $_FILES['pass']['type'];
-                $tmp_name = $_FILES['pass']['tmp_name'];
-              }
-              $location = "landlords/";
-              $maxsize = 90000000;
-              ?>
-             <div class="panel-body">
+
+<?php 
+ 
+      $amount=$code=$name="";
+
+      if ($_SERVER["REQUEST_METHOD"] == "POST") {
+            $code=test_input($_POST["code"]);
+            $name=test_input($_POST["name"]);
+            $amount=test_input($_POST["amount"]);
+            $period=test_input($_POST["period"]);
+            $date=date("Y-m-d");
+            $agent = $_SESSION['username'];
+      
+      }
+?>
+            
+        <div class="panel-body">
         <div class="row">
           <div class="col-md-12">
-        <form action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>" role="form" method="POST" enctype="multipart/form-data">
+            <form action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>" role="form" method="POST" >
 
-            <div class="form-group">
-              <input class="form-control " name="fname" id="name" type="text" placeholder="First Name" required>
-            </div> 
+                <div class="form-group">
+                   <input class="form-control " name="name" id="name" type="text" placeholder="Account Name" required>
+                </div> 
 
-            <div class="form-group">
-              <input class="form-control " name="lname" id="name" type="text" placeholder="last Name" required>
-            </div> 
+                <div class="form-group">
+                    <input class="form-control " name="code" id="name" type="text" placeholder="Transaction code" required>
+                </div> 
 
-            <div class="form-group">
-              <input class="form-control " name="id_no" id="name" type="text" placeholder="ID Number" required>
-            </div> 
+                <div class="form-group">
+                    <input class="form-control " name="amount"  type="text" placeholder="Amount in KSH" required>
+                </div>
 
-            <div class="form-group">
-              <input class="form-control " name="phone"  type="text" placeholder="Phone Number" required>
-            </div>
+                <div class="form-group">
+                    <input class="form-control " name="period"  type="text" placeholder="Being Payment of Period eg Feb/2019" required>
+                </div>
 
-            <div class="form-group">
-              <input class="form-control " name="email" id="name" type="text" placeholder="Email Address" required>
-            </div> 
-
-            <div class="form-group">
-              <input class="form-control " name="property_id" id="name" type="text" placeholder="Property Name" required>
-            </div> 
-
-            <div class="form-group">
-              <input class="form-control " name="bank" id="name" type="text" placeholder="Name of Bank" required>
-            </div> 
-
-            <div class="form-group">
-              <input class="form-control " name="account" id="name" type="text" placeholder="Account Number" required>
-            </div> 
-
-
-            <div class="form-group last">
-              <input type="file" name="pass" id="name">
-            <p class="help-block">Passport Photo</p>
-            </div>
-
-            <div class="form-group last">
-              <input type="submit" class="btn btn-danger btn-outline-primary" value="submit">
-            </div>
-        </form>
+                <div class="form-group last">
+                    <input type="submit" class="btn btn-danger btn-outline-primary" value="submit">
+                </div>
+            </form>
               </div>
-              </div>
+                </div>
 <?php 
-if (isset($pass) & !empty($pass)) {
-  if ($type == "image/jpeg" || $type == "image/JPG" || $type == "image/png" || $type == "image/PNG" || $type == "image/jpeg" || $type == "image/JPEG" && $size <= $maxsize) {
-  if (move_uploaded_file($tmp_name, $location . $pass)) {
+if (isset($_POST["amount"])) {
+    $query1= "INSERT INTO mpesa (" ;
+    $query1.="account_name,transaction_code,date, " ;
+    $query1.="amount,period,agent)" ;
+    $query1.="VALUES (" ;
+    $query1.=" '{$name}','{$code}', " ;
+    $query1.="'{$date}','{$amount}','{$period}','{$agent}'" ;
+    $query1.=")";
+    $results=mysqli_query($con,$query1);
+            confirm_query($results);
 
-    if (isset($_POST["lname"])) {
-
-      $query = "INSERT INTO landlords (fname,lname,id_no,phone,email,prop_name,DOA,bank,agent,account_no,passport)
-
-VALUES ('{$fname}','{$lname}','{$id}','{$phone}','{$mail}','{ $propertyid}','{$date}','{$bank}','{$agent}','{$account}','{$pass}')";
-
-      $results = mysqli_query($con, $query);
-      confirm_query($results);
-
-      if ($results) {
-        echo ' <div class="alert alert-success alert-dismissable">
-                    <button type="button" class="close" data-dismiss="alert"
-                    aria-hidden="true">
-                    &times;
-                    </button>
-                    Landlord  added Successfully.<a href="manage_landlords.php">view</a>
+    if ($results) {
+          echo ' <div class="alert alert-success alert-dismissable">
+                        <button type="button" class="close" data-dismiss="alert"
+                        aria-hidden="true">
+                        &times;
+                        </button>
+                        Payment Recorded Successfully.<a href="manage_payments.php">Manage Payments</a>
                 </div>';
-      } 
+        
 
     } else {
-        echo' <div class="alert alert-success alert-dismissable">
-                  <button type="button" class="close" data-dismiss="alert"
-                  aria-hidden="true">
-                  &times;
-                  </button>
-                  Staff creation failed.<a href="add_landlord.php">Try Again</a>
-              </div>';   
-    }
+        echo ' <div class="alert alert-warning alert-dismissable">
+                        <button type="button" class="close" data-dismiss="alert"
+                        aria-hidden="true">
+                        &times;
+                        </button>
+                        Payment recording failed.<a href="add_payments.php">Try Again</a>
+                </div>';
+      }
   }
-} else {
-    echo '<div class="alert alert-warning alert-dismissable">
-          <button type="button" class="close" data-dismiss="alert"
-          aria-hidden="true">
-          &times;
-          </button>
-          File should be jpeg/jpg/png image & only 100 kb in size.<a href="add_landlord.php">Try Again</a>
-    </div>';
-  }
-}
-?>    
 
-             
-                </div>
+
+?>             </div>
               </div>
           </div>
         </div>
@@ -262,7 +215,7 @@ VALUES ('{$fname}','{$lname}','{$id}','{$phone}','{$mail}','{ $propertyid}','{$d
 </p>
     </footer>
 
-    
+   
 
     <!-- Bootstrap core JavaScript
     ================================================== -->
