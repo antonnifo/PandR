@@ -1,4 +1,4 @@
-## Property and Rent Management System  
+## Property and Rent Management System ![GitHub](https://img.shields.io/github/license/antonnifo/https://github.com/antonnifo/PandR.svg)  
 ### Tech/framework used 
 [PHP 7.2](http://php.net/docs.php) 
 
