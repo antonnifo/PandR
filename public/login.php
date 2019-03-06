@@ -89,17 +89,4 @@ and pword='{" . md5($password) . "}'";
       </div>
     </section>
 
-    <footer id="footer">
-  <p>© 2017-<?php echo date("Y"); ?> P<small>and</small>R. All rights reserved 
-    </footer>
-
-  <script>
-     CKEDITOR.replace( 'editor1' );
- </script>
-
-    <!-- Bootstrap core JavaScript
-    ================================================== -->
-    <!-- Placed at the end of the document so the pages load faster -->
-    <script src="js/bootstrap.min.js"></script>
-  </body>
-</html>
+    <?php include '../includes/footer.php'; ?>
