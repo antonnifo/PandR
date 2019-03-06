@@ -1,51 +1,10 @@
-<?php ob_start(); ?>
-<?php include '../includes/db_connection.php'; ?>
-<?php include '../includes/functions.php'; ?>
-<?php include '../includes/auth.php'; ?>
-<!DOCTYPE html>
-<html lang="en">
-  <head>
-    <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Admin Area | Dashboard</title>
-    <!-- Bootstrap core CSS -->
-    <link href="css/bootstrap.min.css" rel="stylesheet">
-    <link href="css/style.css" rel="stylesheet">
-     <link href="css/font-awesome.min.css" rel="stylesheet">
-    
-  </head>
-  <body>
-
-    <nav class="navbar navbar-default">
-      <div class="container">
-        <div class="navbar-header">
-          <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
-            <span class="sr-only">Toggle navigation</span>
-            <span class="icon-bar"></span>
-            <span class="icon-bar"></span>
-            <span class="icon-bar"></span>
-          </button>
-          <a class="navbar-brand" href="index.php">P<small>and</small>R Management System</a>
-        </div>
-        <div id="navbar" class="collapse navbar-collapse">
-          <ul class="nav navbar-nav">
-            <li class="active"><a href="index.php">Dashboard</a></li>
-          </ul>
-          <ul class="nav navbar-nav navbar-right">
-            <li><a href="#">Welcome, <?php echo $_SESSION['username']; ?> <i class="fa fa-user" aria-hidden="true">
-  </i></a></li>
-            <li><a href="logout.php"><i class="fa fa-sign-out"></i> Logout</a></li>
-          </ul>
-        </div><!--/.nav-collapse -->
-      </div>
-    </nav>
+<?php include '../includes/header.php'; ?>
 
     <header id="header">
       <div class="container">
         <div class="row">
           <div class="col-md-10">
-            <h1><span class="fa fa-users" aria-hidden="true"></span> Tenants<small> Add tenant</small></h1>
+            <h1><span class="fa fa-users" aria-hidden="true"></span> Tenants<small> Update tenant</small></h1>
           </div>
           
         </div>
@@ -125,7 +84,7 @@
             <!-- Website Overview -->
             <div class="panel panel-default">
               <div class="panel-heading main-color-bg">
-                <h3 class="panel-title"> Update Tenant Details</h3>
+                <h3 class="panel-title"> Edit Tenant Details</h3>
               </div>
               <?php 
                 $tenant_id = $_REQUEST['id'];
@@ -240,19 +199,4 @@
       </div>
     </section>
 
-    <footer id="footer">
-       <p>© 2017-<?php echo date("Y"); ?> P<small>and</small>R. All rights reserved 
-
-</p>
-    </footer>
-
-   
-
-    <!-- Bootstrap core JavaScript
-    ================================================== -->
-    <!-- Placed at the end of the document so the pages load faster -->
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
-    <script src="js/bootstrap.min.js"></script>
-    <script src="js/jquery.min.js"></script>
-  </body>
-</html>
+<?php include '../includes/footer.php'; ?>
